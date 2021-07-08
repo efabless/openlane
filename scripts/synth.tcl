@@ -345,6 +345,9 @@ if { [info exists ::env(SYNTH_EXPLORE)] && $::env(SYNTH_EXPLORE) } {
 	write_verilog -noattr -noexpr -nohex -nodec -defparam "$::env(SAVE_NETLIST)"
 }
 
+# dump a post techmap dot file
+show -format dot -prefix $::env(TMP_DIR)/synthesis/post_techmap $vtop
+
 if { $::env(SYNTH_NO_FLAT) } {
 	design -reset
 	read_liberty -lib -ignore_miss_dir -setattr blackbox $::env(LIB_SYNTH_COMPLETE_NO_PG)
